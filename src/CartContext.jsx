@@ -6,7 +6,7 @@ function cartReducer(state, action) {
   switch (action.type) {
     case "add": {
       if (state.some((item) => item.id === action.id)) {
-        return state.map((item) => item.id === action.id ? {...item, quantity: item.quantity + action.quantity} : item)
+        return state.map((item) => item.id === action.id ? {...item, quantity: Number(item.quantity) + Number(action.quantity)} : item)
       } else {
         return [...state, { id: action.id, quantity: action.quantity }];
       }
