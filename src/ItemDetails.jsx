@@ -6,15 +6,15 @@ import { CartContext } from "./CartContext";
 
 function ItemDetails({ item }) {
   const [quantity, setQuantity] = useState(1);
-  const { cart, setCart } = useContext(CartContext);
+  const { cartState, dispatch } = useContext(CartContext);
 
   const handleQuantityChange = (e) => {
     setQuantity(e.target.value);
   };
   const handleCartAdd = () => {
     console.log(`Added ${quantity} of item ${item.id}`);
-    setCart([...cart, { id: item.id, quantity: quantity }]);
-    console.log(cart)
+    dispatch({type: "add", id: item.id, quantity: quantity});
+    console.log(cartState)
   };
   return createPortal(
     <div className="z-50 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg border-1 border-gray-500 w-2/3 h-4/5 max-h-full p-12">

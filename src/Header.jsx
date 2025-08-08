@@ -5,7 +5,7 @@ import { CartContext } from "./CartContext";
 import { useContext } from "react";
 
 function Header() {
-  const { cart } = useContext(CartContext)
+  const { cartState } = useContext(CartContext)
   return (
     <header className="p-6 flex justify-between">
       <div className="">
@@ -21,7 +21,7 @@ function Header() {
         <Link to="/">Home</Link>
         <Link to="shop">Shop</Link>
         <ShoppingCartIcon className="h-5" />
-        <p>{cart.length === 0 ? "0" : cart.length}</p>
+        <p>{cartState.length === 0 ? "0" : cartState.length}</p>
       </nav>
     </header>
   );
